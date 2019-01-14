@@ -20,24 +20,22 @@ class RCControl(object):
 
     def steer(self, direction):
         if direction == 2:
-            self.serial_port.write(chr(1).encode())
+            self.serial_port.write(b'1')
             print("Forward")
         elif direction == 0:
-            #self.serial_port.write(chr(7).encode())
-            self.serial_port.write(chr(4).encode())
+            self.serial_port.write(b'7')
             print("Left")
         elif direction == 1:
-            #self.serial_port.write(chr(6).encode())
-            self.serial_port.write(chr(3).encode())
+            self.serial_port.write(b'6')
             print("Right")
         elif direction== 3:
-            self.serial_port.write(chr(2).encode())
+            self.serial_port.write(b'2')
             print("Reverse")
         else:
             self.stop()
 
     def stop(self):
-        self.serial_port.write(chr(0).encode())
+        self.serial_port.write(b'0')
         
         
 class VideoStreamHandler(socketserver.StreamRequestHandler):
