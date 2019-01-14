@@ -71,7 +71,8 @@ class VideoStreamHandler(socketserver.StreamRequestHandler):
                         break
         finally:
             cv2.destroyAllWindows()
-            
+            self.rc_car.stop()
+            self.rc_car.serial_port.close()
             sys.exit()
             exit()
 
